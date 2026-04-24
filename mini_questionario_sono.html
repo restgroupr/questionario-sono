@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Questionário do Sono – REST</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3B4FBF;
+    --blue-dark: #2c3a99;
+    --blue-light: #eef0fb;
+    --blue-mid: #c4caf5;
+    --accent: #5C6EE8;
+    --text: #1a1f3c;
+    --text-soft: #5a6080;
+    --white: #ffffff;
+    --bg: #f5f6fc;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(59,79,191,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── BANNER ── */
+  .banner-wrap {
+    max-width: 760px;
+    width: 100%;
+    margin: 32px auto 0;
+    padding: 0 20px;
+  }
+  .banner {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .banner img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .page-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION CARD ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px 36px;
+    margin-bottom: 28px;
+  }
+  .card-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--blue-mid);
+  }
+
+  /* ── ANAMNESE GRID ── */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-soft);
+  }
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  select {
+    border: 1.5px solid var(--blue-mid);
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 0.93rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus {
+    border-color: var(--accent);
+    background: var(--white);
+  }
+  select { cursor: pointer; }
+
+  .radio-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 0.88rem;
+    color: var(--text);
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1.5px solid var(--blue-mid);
+    border-radius: 20px;
+    transition: all 0.18s;
+  }
+  .radio-group input[type="radio"] { display: none; }
+  .radio-group input[type="radio"]:checked + span {
+    /* handled via JS class */
+  }
+  .radio-group label.selected {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── QUESTIONNAIRE ITEMS ── */
+  .question-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--blue-light);
+  }
+  .question-item:last-child { border-bottom: none; }
+
+  .question-text {
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .question-num {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── LIKERT SCALE ── */
+  .likert-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .likert-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    color: var(--text-soft);
+    font-weight: 500;
+    padding: 0 2px;
+  }
+  .likert-labels span {
+    flex: 1;
+    text-align: center;
+    line-height: 1.2;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .likert-buttons {
+    display: flex;
+    gap: 4px;
+    align-items: stretch;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .likert-buttons::-webkit-scrollbar { display: none; }
+  .likert-btn {
+    flex: 1 0 38px;
+    min-width: 38px;
+    border: 2px solid var(--blue-mid);
+    border-radius: 8px;
+    background: var(--bg);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 2px;
+    transition: all 0.18s;
+    gap: 4px;
+  }
+  .likert-btn:hover {
+    border-color: var(--accent);
+    background: var(--blue-light);
+  }
+  .likert-btn.active {
+    border-color: var(--blue);
+    background: var(--blue);
+    color: var(--white);
+  }
+  .likert-btn .btn-num {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .likert-btn .btn-emoji {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .likert-btn.active .btn-num { color: var(--white); }
+
+  /* ── RESULT ── */
+  .result-box {
+    display: none;
+    margin-top: 30px;
+    padding: 28px 32px;
+    border-radius: var(--radius);
+    border-left: 6px solid var(--blue);
+    background: var(--blue-light);
+    animation: fadeIn .35s ease;
+  }
+  .result-box.show { display: block; }
+  .result-score {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .result-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .result-desc {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  /* Score colors */
+  .result-box.good { border-color: #2ecc71; background: #edfbf3; }
+  .result-box.good .result-score { color: #27ae60; }
+  .result-box.bad  { border-color: #f39c12; background: #fef9ed; }
+  .result-box.bad .result-score  { color: #e67e22; }
+  .result-box.severe { border-color: #e74c3c; background: #fef0ee; }
+  .result-box.severe .result-score { color: #c0392b; }
+
+  /* ── SUBMIT ── */
+  .btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--blue-dark); }
+  .btn-submit:active { transform: scale(0.99); }
+
+  .btn-reset {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 0.88rem;
+    font-family: inherit;
+    border: 1.5px solid var(--blue-mid);
+    border-radius: var(--radius);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.18s;
+  }
+  .btn-reset:hover { border-color: var(--blue); color: var(--blue); }
+
+  .required-note {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin-bottom: 20px;
+  }
+  .required-note span { color: #e74c3c; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--blue-dark);
+    color: rgba(255,255,255,0.85);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .footer-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .footer-group {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .footer-credits {
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+  .footer-credits a { color: var(--blue-mid); text-decoration: none; }
+  .footer-credits a:hover { text-decoration: underline; }
+  .footer-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    margin: 14px 0;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  @keyframes fadeIn { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: none; } }
+
+  @media (max-width: 540px) {
+    .card { padding: 22px 18px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-field.full { grid-column: 1; }
+    .likert-btn .btn-emoji { font-size: 1rem; }
+    .likert-btn .btn-num { font-size: 0.9rem; }
+    .likert-labels { font-size: 0.65rem; }
+    .card { padding: 20px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner-wrap">
+  <div class="banner">
+    <img src="2025.png" alt="REST – Research in Exercise, Sleep and Sports Training">
+  </div>
+</div>
+
+<main>
+  <h1 class="page-title">Mini Questionário do Sono (MSQ)</h1>
+  <p class="page-subtitle">Instrumento de triagem validado para a identificação da frequência das dificuldades relacionadas a qualidade do sono.
+Responda as questões abaixo com base no seu padrão das <strong>últimas 4 semanas</strong>.</p>
+
+  <form id="msqForm" novalidate>
+
+    <!-- QUESTIONNAIRE -->
+    <div class="card">
+      <div class="card-title">Questões sobre o Sono</div>
+      <p class="required-note">Para cada pergunta, escolha a opção que melhor descreve a frequência do evento nas <strong>últimas 4 semanas</strong>. <span>*</span> Todas as questões são obrigatórias.</p>
+
+      <div id="questions"></div>
+    </div>
+
+    <!-- ACTIONS -->
+    <button type="button" class="btn-submit" onclick="calcular()">Calcular Resultado</button>
+    <button type="button" class="btn-reset" onclick="resetar()">Limpar formulário</button>
+
+    <!-- RESULT -->
+    <div class="result-box" id="resultado">
+      <div class="result-score" id="res-score">—</div>
+      <div class="result-label" id="res-label">—</div>
+      <div class="result-desc" id="res-desc">—</div>
+    </div>
+
+  </form>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-group">REST – Research in Exercise, Sleep and Sports Training</div>
+    <div class="footer-credits">
+      Grupo de Estudos em Exercício, Sono e Treinamento Esportivo<br>
+            
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-credits" id="credits-area">
+      <!-- Espaço para créditos adicionais -->
+      Desenvolvido pelo Grupo REST &nbsp;|&nbsp; Coordenação: <b>Arnaldo Luis Mortatti, PhD</b><br>
+      <a href="https://www.instagram.com/rest_ufrn" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:3px;color:var(--blue-mid);text-decoration:none;margin-top:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+          <defs>
+            <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+              <stop offset="0%" stop-color="#fdf497"/>
+              <stop offset="5%" stop-color="#fdf497"/>
+              <stop offset="45%" stop-color="#fd5949"/>
+              <stop offset="60%" stop-color="#d6249f"/>
+              <stop offset="90%" stop-color="#285AEB"/>
+            </radialGradient>
+          </defs>
+          <rect x="2" y="2" width="20" height="20" rx="6" ry="6" fill="url(#ig-grad)"/>
+          <circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+        </svg>
+        @rest_ufrn
+      </a>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-copy">© 2025 REST. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<script>
+const questions = [
+  { num: 1,  text: "Você tem dificuldade em adormecer à noite?" },
+  { num: 2,  text: "Você acorda de madrugada e não consegue adormecer de novo?" },
+  { num: 3,  text: "Você toma remédios para dormir ou tranquilizantes?" },
+  { num: 4,  text: "Você dorme durante o dia? (sem contar cochilos programados)" },
+  { num: 5,  text: "Ao acordar de manhã, você ainda se sente cansado(a)?" },
+  { num: 6,  text: "Você ronca à noite (que você saiba)?" },
+  { num: 7,  text: "Você acorda durante a noite?" },
+  { num: 8,  text: "Você acorda com dor de cabeça?" },
+  { num: 9,  text: "Você sente cansaço sem ter nenhum motivo aparente?" },
+  { num: 10, text: "Você tem sono agitado? (mudanças de posição ou movimentos de pernas/braços)" }
+];
+
+const emojis   = ["😴","🙂","😐","😕","😟","😣","😩"];
+const answers  = {};
+
+const scaleLabels = [
+  { label: "Nunca", value: 1 },
+  { label: "Muito raramente", value: 2 },
+  { label: "Raramente", value: 3 },
+  { label: "Às vezes", value: 4 },
+  { label: "Frequentemente", value: 5 },
+  { label: "Muito frequentemente", value: 6 },
+  { label: "Sempre", value: 7 }
+];
+
+function buildQuestions() {
+  const container = document.getElementById('questions');
+  questions.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'question-item';
+    div.innerHTML = `
+      <div class="question-text">
+        <span class="question-num">${q.num}</span>${q.text}
+      </div>
+      <div class="likert-wrap">
+        <div class="likert-labels">
+          ${scaleLabels.map(s => `<span>${s.label}</span>`).join('')}
+        </div>
+        <div class="likert-buttons" id="q${q.num}">
+          ${scaleLabels.map(s => `
+            <button type="button" class="likert-btn" data-q="${q.num}" data-v="${s.value}" title="${s.label}">
+              <span class="btn-emoji">${emojis[s.value - 1]}</span>
+              <span class="btn-num">${s.value}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+
+  document.querySelectorAll('.likert-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.dataset.q;
+      const v = parseInt(btn.dataset.v);
+      answers[q] = v;
+      document.querySelectorAll(`.likert-btn[data-q="${q}"]`).forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+}
+
+// Radio pill selection
+document.querySelectorAll('.radio-group label').forEach(lbl => {
+  lbl.addEventListener('click', () => {
+    const group = lbl.closest('.radio-group');
+    group.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+    lbl.classList.add('selected');
+  });
+});
+
+function calcular() {
+  // Validate all questions answered
+  for (let i = 1; i <= 10; i++) {
+    if (!answers[i]) {
+      alert(`Por favor, responda a questão ${i}.`);
+      return;
+    }
+  }
+
+  const total = Object.values(answers).reduce((a, b) => a + b, 0);
+
+  const res = document.getElementById('resultado');
+  document.getElementById('res-score').textContent = total + ' pts';
+
+  res.className = 'result-box show';
+
+  if (total <= 24) {
+    res.classList.add('good');
+    document.getElementById('res-label').textContent = '✔ Boa qualidade de sono';
+    document.getElementById('res-desc').textContent =
+      `Pontuação: ${total} (10–24). Seu padrão de sono apresenta boa qualidade. Continue mantendo hábitos saudáveis de sono e pratique atividade física regularmente.`;
+  } else if (total <= 30) {
+    res.classList.add('bad');
+    document.getElementById('res-label').textContent = '⚠ Má qualidade de sono';
+    document.getElementById('res-desc').textContent =
+      `Pontuação: ${total} (25–30). Você apresenta sinais de má qualidade do sono. Considere adotar estratégias de higiene do sono e, se os sintomas persistirem, busque avaliação profissional.`;
+  } else {
+    res.classList.add('severe');
+    document.getElementById('res-label').textContent = '⛔ Dificuldade severa de sono';
+    document.getElementById('res-desc').textContent =
+      `Pontuação: ${total} (31–70). O resultado indica dificuldade severa de sono. Recomenda-se buscar avaliação médica especializada o quanto antes.`;
+  }
+
+  res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetar() {
+  if (!confirm('Deseja limpar todas as respostas?')) return;
+  document.getElementById('msqForm').reset();
+  document.querySelectorAll('.likert-btn').forEach(b => b.classList.remove('active'));
+  for (let k in answers) delete answers[k];
+  const res = document.getElementById('resultado');
+  res.className = 'result-box';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+buildQuestions();
+</script>
+</body>
+</html>
